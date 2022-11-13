@@ -4,16 +4,19 @@ import { MongoClient, ClientMariaDB }
 
 
 const mongoClient = new MongoClient();
-const URI_MONGO="mongodb://itvoDeveloper:********@localhost:27017/quotes?authMechanism=SCRAM-SHA-256&authSource=admin";
+const URI_MONGO="mongodb://itvoDeveloper:mongoPassword@127.0.0.1:27017/quotes?authMechanism=SCRAM-SHA-256&authSource=admin";
+
+
 export const connectorMongoDB = await mongoClient.connect(URI_MONGO);
 
 const CONN_MARIADB = {
     hostname: "localhost",
-    port: 3308,
-    username: "devDeno",
-    password: "**********",
+    port: 3306,
+    username: "root",
+    password: "",
     db: "quotes",
-    poolSize: 10};
+    poolSize: 10
+};
 
 export const connectorMariaDB = await new ClientMariaDB().connect(CONN_MARIADB);
 
